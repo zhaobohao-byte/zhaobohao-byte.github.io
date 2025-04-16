@@ -24797,7 +24797,7 @@ div#swiper_container:hover {
   height: 100%;
   top: 0;
   left: 0;
-  box-shadow: 0 -109px 133px -9px #f7f7f7 inset;
+  /* box-shadow: 0 -109px 133px -9px #f7f7f7 inset; */
 }
 
 .topGroup .todayCard.hide {
