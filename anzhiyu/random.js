@@ -1,3 +1,3 @@
-var posts=["2025/04/16/控制算法（一）-粒子群算法/","2025/04/16/latex论文写作-（三）/","2025/04/14/latex论文写作-（五）/"];function toRandomPost(){
+var posts=["posts/fe09d13e.html","posts/a00d6121.html","posts/78bebd03.html"];function toRandomPost(){
     pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
   };
