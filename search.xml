@@ -82,9 +82,9 @@
     
     
     <entry>
-      <title>相册集</title>
-      <link href="/album/index.html"/>
-      <url>/album/index.html</url>
+      <title>小赵日常</title>
+      <link href="/dailyPhoto/index.html"/>
+      <url>/dailyPhoto/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -93,9 +93,9 @@
     
     
     <entry>
-      <title>小赵日常</title>
-      <link href="/dailyPhoto/index.html"/>
-      <url>/dailyPhoto/index.html</url>
+      <title>即刻短文</title>
+      <link href="/essay/index.html"/>
+      <url>/essay/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -115,9 +115,9 @@
     
     
     <entry>
-      <title>即刻短文</title>
-      <link href="/essay/index.html"/>
-      <url>/essay/index.html</url>
+      <title>相册集</title>
+      <link href="/album/index.html"/>
+      <url>/album/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -148,22 +148,22 @@
     
     
     <entry>
-      <title>友情链接</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title></title>
+      <link href="/custom/css/custom.css"/>
+      <url>/custom/css/custom.css</url>
       
-        <content type="html"><![CDATA[<p>sss</p>]]></content>
+        <content type="html"><![CDATA[/* 白天网站背景 */#web_bg {    background-size: 40rem;    background-image: url(/img/bg.svg) !important;    background-repeat: initial}/* 夜间网站背景 */[data-theme=dark] #web_bg {    background-size: 100rem;    background-image: url(/img/bg.jpg) !important;}]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title></title>
-      <link href="/custom/css/custom.css"/>
-      <url>/custom/css/custom.css</url>
+      <title>美景如画</title>
+      <link href="/wordScenery/index.html"/>
+      <url>/wordScenery/index.html</url>
       
-        <content type="html"><![CDATA[/* 白天网站背景 */#web_bg {    background-size: 40rem;    background-image: url(/img/bg.svg) !important;    background-repeat: initial}/* 夜间网站背景 */[data-theme=dark] #web_bg {    background-size: 100rem;    background-image: url(/img/bg.jpg) !important;}]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -193,32 +193,10 @@
     
     <entry>
       <title></title>
-      <link href="/custom/css/imgloaded.css"/>
-      <url>/custom/css/imgloaded.css</url>
-      
-        <content type="html"><![CDATA[/* 首页头图加载 */  .pl-container {      width: 100%;      height: 100%;      position: relative;  /* 一图流这里改fixed */      /* 一图流这里加z-index: -2; */     overflow: hidden;      will-change: transform; /* 添加性能优化 */      /* blur-to-clear模糊动画2s */    animation: blur-to-clear 2s cubic-bezier(.62,.21,.25,1) 0s 1 normal backwards running, scale 1.5s cubic-bezier(.62,.21,.25,1) 0s 1 both;    }    .pl-img {      width: 100%;      height: 100%;      position: absolute;      background-position: center;      background-size: cover;      background-repeat: no-repeat;      opacity: 0;      transition: opacity 1s;    }        @keyframes blur-to-clear {      0% {        filter: blur(50px);        opacity: 1;      }      100% {        filter: blur(0);        opacity: 1;      }    }        @keyframes scale {      0% {        transform: scale(1.5) translateZ(0);        opacity: 0;      }      to {        transform: scale(1) translateZ(0);        opacity: 1;      }    }        .pl-visible {      opacity: 1;    }        .pl-blur {      /* 小图锯齿多，增加高斯模糊 */      filter: blur(50px);    }]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
       <link href="/custom/js/countdown.js"/>
       <url>/custom/js/countdown.js</url>
       
         <content type="html"><![CDATA[const CountdownTimer = (() => {    const config = {        targetDate: "2026-06-30",        targetName: "毕业",        units: {            day: { text: "今日", unit: "小时" },            week: { text: "本周", unit: "天" },            month: { text: "本月", unit: "天" },            year: { text: "本年", unit: "天" }        }    };    const calculators = {        day: () => {            const hours = new Date().getHours();            return {                remaining: 24 - hours,                percentage: (hours / 24) * 100            };        },        week: () => {            const day = new Date().getDay();            const passed = day === 0 ? 6 : day - 1;            return {                remaining: 6 - passed,                percentage: ((passed + 1) / 7) * 100            };        },        month: () => {            const now = new Date();            const total = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();            const passed = now.getDate() - 1;            return {                remaining: total - passed,                percentage: (passed / total) * 100            };        },        year: () => {            const now = new Date();            const start = new Date(now.getFullYear(), 0, 1);            const total = 365 + (now.getFullYear() % 4 === 0 ? 1 : 0);            const passed = Math.floor((now - start) / 86400000);            return {                remaining: total - passed,                percentage: (passed / total) * 100            };        }    };    function updateCountdown() {        const elements = ['eventName', 'eventDate', 'daysUntil', 'countRight']            .map(id => document.getElementById(id));                if (elements.some(el => !el)) return;                const [eventName, eventDate, daysUntil, countRight] = elements;        const now = new Date();        const target = new Date(config.targetDate);                eventName.textContent = config.targetName;        eventDate.textContent = config.targetDate;        daysUntil.textContent = Math.round((target - now.setHours(0,0,0,0)) / 86400000);                countRight.innerHTML = Object.entries(config.units)            .map(([key, {text, unit}]) => {                const {remaining, percentage} = calculators[key]();                return `                    <div class="cd-count-item">                        <div class="cd-item-name">${text}</div>                        <div class="cd-item-progress">                            <div class="cd-progress-bar" style="width: ${percentage}%; opacity: ${percentage/100}"></div>                            <span class="cd-percentage ${percentage >= 46 ? 'cd-many' : ''}">${percentage.toFixed(2)}%</span>                            <span class="cd-remaining ${percentage >= 60 ? 'cd-many' : ''}">                                <span class="cd-tip">还剩</span>${remaining}<span class="cd-tip">${unit}</span>                            </span>                        </div>                    </div>                `;            }).join('');    }    function injectStyles() {        const styles = `            .card-countdown .item-content {                display: flex;            }            .cd-count-left {                position: relative;                display: flex;                flex-direction: column;                margin-right: 0.8rem;                line-height: 1.5;                align-items: center;                justify-content: center;            }            .cd-count-left .cd-text {                font-size: 14px;            }            .cd-count-left .cd-name {                font-weight: bold;                font-size: 18px;            }            .cd-count-left .cd-time {                font-size: 30px;                font-weight: bold;                color: var(--anzhiyu-main);            }            .cd-count-left .cd-date {                font-size: 12px;                opacity: 0.6;            }            .cd-count-left::after {                content: "";                position: absolute;                right: -0.8rem;                width: 2px;                height: 80%;                background-color: var(--anzhiyu-main);                opacity: 0.5;            }            .cd-count-right {                flex: 1;                margin-left: .8rem;                display: flex;                flex-direction: column;                justify-content: space-between;            }            .cd-count-item {                display: flex;                flex-direction: row;                align-items: center;                height: 24px;            }            .cd-item-name {                font-size: 14px;                margin-right: 0.8rem;                white-space: nowrap;            }            .cd-item-progress {                position: relative;                display: flex;                flex-direction: row;                align-items: center;                justify-content: space-between;                height: 100%;                width: 100%;                border-radius: 8px;                background-color: var(--anzhiyu-background);                overflow: hidden;            }            .cd-progress-bar {                height: 100%;                border-radius: 8px;                background-color: var(--anzhiyu-main);            }            .cd-percentage,            .cd-remaining {                position: absolute;                font-size: 12px;                margin: 0 6px;                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;            }            .cd-many {                color: #fff;            }            .cd-remaining {                opacity: 0;                transform: translateX(10px);            }            .card-countdown .item-content:hover .cd-remaining {                transform: translateX(0);                opacity: 1;            }            .card-countdown .item-content:hover .cd-percentage {                transform: translateX(-10px);                opacity: 0;            }        `;        const styleSheet = document.createElement("style");        styleSheet.textContent = styles;        document.head.appendChild(styleSheet);    }    let timer;    const start = () => {        injectStyles();        updateCountdown();        timer = setInterval(updateCountdown, 600000);    };        ['pjax:complete', 'DOMContentLoaded'].forEach(event => document.addEventListener(event, start));    document.addEventListener('pjax:send', () => timer && clearInterval(timer));        return { start, stop: () => timer && clearInterval(timer) };})();]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>美景如画</title>
-      <link href="/wordScenery/index.html"/>
-      <url>/wordScenery/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -230,6 +208,28 @@
       <url>/custom/js/imgloaded.js</url>
       
         <content type="html"><![CDATA[// 首页头图加载优化/** * @description 实现medium的渐进加载背景的效果 */class ProgressiveLoad {    constructor(smallSrc, largeSrc) {      this.smallSrc = smallSrc;      this.largeSrc = largeSrc;      this.initTpl();    }      /**     * @description 生成ui模板     */    initTpl() {      this.container = document.createElement('div');      this.smallStage = document.createElement('div');      this.largeStage = document.createElement('div');      this.smallImg = new Image();      this.largeImg = new Image();      this.container.className = 'pl-container';      this.smallStage.className = 'pl-img pl-blur';      this.largeStage.className = 'pl-img';      this.container.appendChild(this.smallStage);      this.container.appendChild(this.largeStage);      this.smallImg.onload = this._onSmallLoaded.bind(this);      this.largeImg.onload = this._onLargeLoaded.bind(this);    }      /**     * @description 加载背景     */    progressiveLoad() {      this.smallImg.src = this.smallSrc;      this.largeImg.src = this.largeSrc;    }      /**     * @description 大图加载完成     */    _onLargeLoaded() {      this.largeStage.classList.add('pl-visible');      this.largeStage.style.backgroundImage = `url('${this.largeSrc}')`;    }      /**     * @description 小图加载完成     */    _onSmallLoaded() {      this.smallStage.classList.add('pl-visible');      this.smallStage.style.backgroundImage = `url('${this.smallSrc}')`;    }  }    const executeLoad = (config, target) => {    console.log('执行渐进背景替换');    const isMobile = window.matchMedia('(max-width: 767px)').matches;    const loader = new ProgressiveLoad(      isMobile ? config.mobileSmallSrc : config.smallSrc,      isMobile ? config.mobileLargeSrc : config.largeSrc    );    // 和背景图颜色保持一致，防止高斯模糊后差异较大    if (target.children[0]) {      target.insertBefore(loader.container, target.children[0]);    }    loader.progressiveLoad();  };    const config = {    smallSrc: '/img/xiaotu.jpg', // 小图链接 尽可能配置小于100k的图片    largeSrc: '/img/tu.jpg', // 大图链接 最终显示的图片    mobileSmallSrc: '/img/sjxt.jpg', // 手机端小图链接 尽可能配置小于100k的图片    mobileLargeSrc: '/img/sjdt.jpg', // 手机端大图链接 最终显示的图片    enableRoutes: ['/'],    };  function initProgressiveLoad(config) {    const target = document.getElementById('page-header');    if (target && target.classList.contains('full_page')) {      executeLoad(config, target);    }  }    function onPJAXComplete(config) {    const target = document.getElementById('page-header');    if (target && target.classList.contains('full_page')) {      initProgressiveLoad(config);    }  }  document.addEventListener("DOMContentLoaded", function() {    initProgressiveLoad(config);  });    document.addEventListener("pjax:complete", function() {    onPJAXComplete(config);  });]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/custom/css/imgloaded.css"/>
+      <url>/custom/css/imgloaded.css</url>
+      
+        <content type="html"><![CDATA[/* 首页头图加载 */  .pl-container {      width: 100%;      height: 100%;      position: relative;  /* 一图流这里改fixed */      /* 一图流这里加z-index: -2; */     overflow: hidden;      will-change: transform; /* 添加性能优化 */      /* blur-to-clear模糊动画2s */    animation: blur-to-clear 2s cubic-bezier(.62,.21,.25,1) 0s 1 normal backwards running, scale 1.5s cubic-bezier(.62,.21,.25,1) 0s 1 both;    }    .pl-img {      width: 100%;      height: 100%;      position: absolute;      background-position: center;      background-size: cover;      background-repeat: no-repeat;      opacity: 0;      transition: opacity 1s;    }        @keyframes blur-to-clear {      0% {        filter: blur(50px);        opacity: 1;      }      100% {        filter: blur(0);        opacity: 1;      }    }        @keyframes scale {      0% {        transform: scale(1.5) translateZ(0);        opacity: 0;      }      to {        transform: scale(1) translateZ(0);        opacity: 1;      }    }        .pl-visible {      opacity: 1;    }        .pl-blur {      /* 小图锯齿多，增加高斯模糊 */      filter: blur(50px);    }]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友情链接</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[<p>sss</p>]]></content>
       
     </entry>
     
