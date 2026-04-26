@@ -23596,10 +23596,14 @@ body[data-type="essay"] #web_bg {
 
 /* 顶部样式 */
 .author-content.author-content-item.essayPage {
-  height: 19rem;
+  height: clamp(18rem, 32vw, 24rem);
   color: var(--anzhiyu-white);
   overflow: hidden;
   margin-top: 0px;
+  background:
+    linear-gradient(90deg, rgba(20, 22, 28, 0.72), rgba(20, 22, 28, 0.38) 42%, rgba(20, 22, 28, 0.12)),
+    var(--essay-top-bg) right center / auto 100% no-repeat,
+    linear-gradient(135deg, #2f4858, #7a6f55) !important;
 }
 body[data-type="essay"] #page .author-content-item .card-content .banner-button-group .banner-button:hover {
   color: var(--anzhiyu-white);
@@ -23617,6 +23621,14 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   #bber .timeline ul li.bber-item {
     width: 100%;
     margin-right: 0px;
+  }
+
+  .author-content.author-content-item.essayPage {
+    height: 18rem;
+    background:
+      linear-gradient(180deg, rgba(20, 22, 28, 0.5), rgba(20, 22, 28, 0.72)),
+      var(--essay-top-bg) center center / contain no-repeat,
+      linear-gradient(135deg, #2f4858, #7a6f55) !important;
   }
 }
 [data-theme="dark"] #bber .bber-music .aplayer,

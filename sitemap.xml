@@ -441,7 +441,7 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/CMake/</loc>
+    <loc>https://bohaoblog.top/tags/%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -455,7 +455,7 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/latex/</loc>
+    <loc>https://bohaoblog.top/tags/CMake/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -469,28 +469,7 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/%E5%80%BC%E5%87%BD%E6%95%B0%E8%BF%91%E4%BC%BC%E5%92%8CDQN/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E5%80%BC%E8%BF%AD%E4%BB%A3%E5%92%8C%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://bohaoblog.top/tags/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -504,7 +483,28 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/</loc>
+    <loc>https://bohaoblog.top/tags/%E5%80%BC%E5%87%BD%E6%95%B0%E8%BF%91%E4%BC%BC%E5%92%8CDQN/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E5%80%BC%E8%BF%AD%E4%BB%A3%E5%92%8C%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/latex/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -512,13 +512,6 @@
   
   <url>
     <loc>https://bohaoblog.top/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E9%9A%8F%E6%9C%BA%E8%BF%91%E4%BC%BC%E7%90%86%E8%AE%BA%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -547,6 +540,13 @@
   
   <url>
     <loc>https://bohaoblog.top/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA-ROS/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E9%9A%8F%E6%9C%BA%E8%BF%91%E4%BC%BC%E7%90%86%E8%AE%BA%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -583,14 +583,14 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://bohaoblog.top/categories/PPO%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/categories/PPO%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://bohaoblog.top/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
