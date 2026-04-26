@@ -315,14 +315,7 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/IEEE/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E6%96%87%E6%9C%AC/</loc>
+    <loc>https://bohaoblog.top/tags/latex/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -343,21 +336,14 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/latex/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://bohaoblog.top/tags/%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E6%96%87%E6%9C%AC/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -371,6 +357,13 @@
   </url>
   
   <url>
+    <loc>https://bohaoblog.top/tags/IEEE/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bohaoblog.top/tags/%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -378,35 +371,7 @@
   </url>
   
   <url>
-    <loc>https://bohaoblog.top/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E9%9A%8F%E6%9C%BA%E8%BF%91%E4%BC%BC%E7%90%86%E8%AE%BA%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E6%96%B9%E7%A8%8B/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
-    <lastmod>2026-04-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bohaoblog.top/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%9C%BA%E5%99%A8%E4%BA%BA-ROS/</loc>
+    <loc>https://bohaoblog.top/tags/%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -420,7 +385,42 @@
   </url>
   
   <url>
+    <loc>https://bohaoblog.top/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E6%96%B9%E7%A8%8B/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E6%9C%BA%E5%99%A8%E4%BA%BA-ROS/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bohaoblog.top/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA-ROS/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bohaoblog.top/tags/%E9%9A%8F%E6%9C%BA%E8%BF%91%E4%BC%BC%E7%90%86%E8%AE%BA%E5%92%8C%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
     <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
