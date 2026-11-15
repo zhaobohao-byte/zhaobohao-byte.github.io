@@ -1,9 +1,0 @@
-<pre><code class="language-python">ssh username@192.168.1.100 # 普通登录（默认端口 22）
-ssh -p 2222 username@example.com # 指定端口
-
-ssh -v username@host # 详细模式（debug 连接问题时非常有用）
-ssh -vvv username@host          # 更详细
-
-scp ./nginx.conf user@host:/etc/nginx/nginx.conf # 本地 → 远程（单个文件）
-scp -r ./my-project/ user@host:/opt/app/ # 本地 → 远程（整个目录，递归）
-scp user@host:/var/log/app.log ./debug-2025.log # 远程 → 本地</code></pre>
