@@ -1,0 +1,96 @@
+<h3 id="前言">前言</h3>
+<p>本人最近在使用 <code>latex</code>
+语言写论文时，碰到了参考文献的格式问题（期刊样式是
+<code>IEEE Transactions on Industrial Electronics</code>）。其中使用
+<code>.bib</code> 为后缀的文件做文献内容管理，通过在最后使用
+<code>\bibliographystyle{ieeetr}</code>
+自带的默认文献格式无法满足期刊的要求，因此希望能自定义一个满足指定期刊要求的文献风格文件来进行统一的参考文献管理，进而撰写此文以做记录。</p>
+<h3 id="期刊模版的参考文献要求">期刊模版的参考文献要求</h3>
+<p>以下是期刊模板的原文要求，自行翻译。</p>
+<blockquote>
+<p>Reference numbers are set flush left and form a column of their own,
+hanging out beyond the body of the reference. The reference numbers are
+on the line, enclosed in square brackets. In all references, the given
+name of the author or editor is abbreviated to the initial only and
+precedes the last name. Use them all; use et al. exceptionally if more
+than 6 author names were listed. Use commas around Jr., Sr., and III in
+names. Abbreviate conference titles [1]. When citing journals [2]–[11],
+provide the issue number, page range, volume number, DOI, year, and/or
+month if available. When referencing a patent [12], provide the day and
+the month of issue, or application. References may not include all
+information; please obtain and include relevant information. Do not
+combine references. There must be only one reference with each number.
+If there is a URL included with the print reference, it can be included
+at the end of the reference [13]. Authors are encouraged to include the
+DOI number for each reference. It’s the most important part of the
+reference. The DOI is like a digital fingerprint and it’s used to
+identify the article without mistakes. Other than books [14]–[17],
+capitalize only the first word in a paper title, except for proper nouns
+and element symbols. For papers published in translation journals,
+please give the English citation first, followed by the original
+foreign-language citation See the end of this document for formats and
+examples of common references. For a complete discussion of references
+and their formats, see “The IEEE Style Manual,” available as a PDF link
+off the Author Digital Toolbox main page.</p>
+</blockquote>
+<p>重点：</p>
+<ul>
+<li>姓名仅缩写为首字母在姓氏之前，如果作者超过6人则使用
+<code>et al</code> ，在完整姓名后使用<code>,</code>结束</li>
+<li>缩写会议名称（一般期刊也要缩写，ISO格式）</li>
+<li>引用期刊提供期号、页码范围、卷号、月份（有则写）</li>
+<li>引用专利时提供专利发行或申请的日期和月份</li>
+<li>DOI号和URL手册上说最好要有，但为了节约纸张一般不写</li>
+</ul>
+<h3 id="overleaf参考文献管理">Overleaf参考文献管理</h3>
+<h4 id="统一管理模式">统一管理模式</h4>
+<p>这里主要讲本人使用的文献管理方式，在 <code>latex</code>
+语言最后加入以下代码：</p>
+<pre><code class="language-latex">\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%你的内容
+...
+...
+...
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 文献风格样式
+\bibliographystyle{ieeetran}
+%% 存储文献的.bib文件
+\bibliography{mybibtex.bib}  
+
+\end{document}</code></pre>
+<p>其中 <code>\bibliographystyle{ieeetran}</code> 是采用了 IEEE Trans
+的风格的模板（根据自己的需求），需要额外在同级目录下载相关的
+<code>.bst</code> 文件才能调用。</p>
+<p><code>\bibliography{mybibtex.bib}</code> 调用同级目录下的
+<code>mybibtex.bib</code>
+文件中你所存放所有相关的参考文献信息，具体信息格式后续展开说明，这样就可以进行一个基本参考文献的使用。</p>
+<h4 id="导入示例">导入示例</h4>
+<p>（1）获取BibTex文件</p>
+<p>以下面TIE的期刊文献示例： <img alt="在这里插入图片描述" decoding="async" height="261" loading="lazy" src="/assets/media/0f6562391c26e590.png" width="1315"/></p>
+<p>在学术搜索引擎中可以查询到此期刊的DOI号为：10.1109/TIE.2023.3331138</p>
+<p>由于本文方法的参考文献信息主要是 <code> BibeTex</code>
+格式，在DOI转BibeTex的网站https://www.doi2bib.org/获取其
+<code> BibeTex</code> 信息文本（最好是最新的内容），如下所示：</p>
+<p><img alt="在这里插入图片描述" decoding="async" height="752" loading="lazy" src="/assets/media/b469527f0f1e8013.png" width="848"/></p>
+<p>（2）导入到Overleaf</p>
+<p>复制到自定义的 <code>.bib</code> 文件中，注意到我们不想要
+<code>url</code> ，即可删掉此行，最后如下：</p>
+<p><img alt="在这里插入图片描述" decoding="async" height="436" loading="lazy" src="/assets/media/84f27c8322f394ac.png" width="800"/></p>
+<p>在论文中使用 <code>\cite{Yu2024}</code>
+引用此文献（未引用的文献不会显示在参考列表中），即可得到：</p>
+<p><img alt="在这里插入图片描述" decoding="async" height="138" loading="lazy" src="/assets/media/124359855afba24b.png" width="867"/></p>
+<p>（3）修改期刊缩写</p>
+<p>由于IEEE TIE的期刊需要将引用期刊的全称变成缩写，因此我们可以在 <a href="https://webofscience.clarivate.cn/wos/alldb/basic-search" rel="noopener noreferrer" target="_blank">Web of
+Science</a> 中找到对应期刊的 ISO 简写为
+<code>IEEE-ASME Trans. Mechatron.</code> ，如下所示：</p>
+<p><img alt="在这里插入图片描述" decoding="async" height="647" loading="lazy" src="/assets/media/f82f14d5108fd45f.png" width="805"/></p>
+<p>（4）定制参考文献</p>
+<p>在 Overleaf 中找到 <code>journal</code>
+属性，将对应的全称修改成我们上述得到的简称即可完成所需的样式。</p>
+<p><img alt="在这里插入图片描述" decoding="async" height="437" loading="lazy" src="/assets/media/2e5ae9d8841c7ee1.png" width="792"/></p>
+<p>最终的效果：</p>
+<p><img alt="在这里插入图片描述" decoding="async" height="130" loading="lazy" src="/assets/media/e3142f0836a59ae6.png" width="879"/></p>
+<h3 id="reference">Reference：</h3>
+<p>[1] <a href="https://blog.csdn.net/weixin_43981621/article/details/129637262" rel="noopener noreferrer" target="_blank">IEEE
+Transactions模板中参考文献作者缩写、期刊名缩写_ieee参考文献期刊缩写-CSDN博客</a></p>

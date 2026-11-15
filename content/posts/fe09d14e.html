@@ -1,0 +1,142 @@
+<blockquote>
+<h2 id="ros-实现深蓝学院宇树机器人仿真">ROS
+实现深蓝学院宇树机器人仿真</h2>
+<h3 id="环境必备">环境必备</h3>
+<p>深蓝学院的作业是使用 <code>ROS</code>
+一件安装指令，在终端进行操作</p>
+<ul>
+<li>使用鱼香 ROS 一键安装指令</li>
+</ul>
+<pre><code class="language-bash">wget http://fishros.com/install -O fishros &amp;&amp; . fishros</code></pre>
+<p>此时安装后的版本为 ROS-Noetic</p>
+<ul>
+<li>更新系统，在终端执行指令</li>
+</ul>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y</code></pre>
+<ul>
+<li>按照深蓝指南安装与 ROS 相关的依赖库</li>
+</ul>
+<pre><code class="language-bash">sudo apt install -y \
+    cmake \
+    curl \
+    git \
+    libfreeimage-dev \
+    libprotoc-dev \
+    protobuf-compiler \
+    libignition-math6-dev \
+    libsqlite3-dev \
+    libtinyxml2-dev \
+    libgflags-dev \
+    libavformat-dev \
+    libavcodec-dev</code></pre>
+<ul>
+<li>添加 <code>Gazebo</code> 官方软件源，为安装其做准备</li>
+</ul>
+<pre><code class="language-bash">sudo apt install -y wget
+wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list &gt; /dev/null</code></pre>
+<ul>
+<li>安装 Gazebo，首先更新软件再进行安装</li>
+</ul>
+<pre><code class="language-bash">sudo apt update
+sudo apt install -y gazebo11 libgazebo11-dev</code></pre>
+<ul>
+<li>配置 Gazebo 的环境变量，告诉系统此文件的路径</li>
+</ul>
+<pre><code class="language-bash">echo "source /usr/share/gazebo/setup.sh" &gt;&gt; ~/.bashrc
+source ~/.bashrc</code></pre>
+<ul>
+<li>验证其安装结果，初始化软件</li>
+</ul>
+<pre><code class="language-bash">gazebo worlds/empty.world</code></pre>
+<p>这时候由于环境变量配置了，就每次添加环境变量</p>
+<p><img alt="image-20250714152914511" decoding="async" height="1054" loading="lazy" src="/assets/media/267f29c0fffb4004.png" width="1851"/></p>
+<ul>
+<li>安装 Eigen 数值计算库，为 Cpp 的数值计算作准备</li>
+</ul>
+<pre><code class="language-bash">cd robocup_g1/eigen-3.4.0
+mkdir build
+cd build
+cmake ..
+sudo make install</code></pre>
+<ul>
+<li>安装 RealSense SDK，用于摄像头等外设与 ROS 进行通讯</li>
+</ul>
+<pre><code class="language-bash">sudo apt-get install ros-noetic-realsense2-camera</code></pre>
+<ul>
+<li>安装 Ignition-math ，作为 Gazebo 的数字计算库</li>
+</ul>
+<pre><code class="language-bash">sudo apt install libignition-math4-dev</code></pre>
+<h3 id="编译和运行">编译和运行</h3>
+<p>找到项目工作空间的根目录，通常根目录下包含文件
+<code>.catkin_workspace</code>，用于标识工作空间，但是往往不会直接显示，按住组合键
+<code>ctrl</code>+<code>H</code>显示隐藏文件</p>
+<ul>
+<li>在此处打开终端，使用 ROS 专属的构建命令</li>
+</ul>
+<pre><code class="language-bash">&gt;conda activate ros_env   # 我使用的系统装有 conda，需要切换到独有的环境中支持 python3.8
+catkin_make</code></pre>
+<ul>
+<li>启动 ROS 工作节点，先启动 Gazebo 仿真节点</li>
+</ul>
+<p>深蓝给出的启动方式为</p>
+<pre><code class="language-bash">&gt;source ~/robocup_g1/devel/setup.bash
+roslaunch unitree_guide gazebo.launch</code></pre>
+<p>第一个命令是临时地将此环境变量告诉给系统，每次输入这个有点麻烦，我们做一个一劳永逸的工作</p>
+<p>先找到当前工作空间的 <code>devel/setup.bash</code> 的绝对路径</p>
+<pre><code class="language-bash">&gt;pwd</code></pre>
+<p>得到终端的响应</p>
+<pre><code class="language-bash">&gt;/home/robot/RemoteUsers/Bohao/examples/robocup_g1/devel</code></pre>
+<p>再在当前工作空间打开终端，并输入命令</p>
+<pre><code class="language-bash">&gt;source ./devel/setup.bash # 仅在当前终端生效
+echo " source ~/RemoteUsers/Bohao/examples/robocup_g1/devel/setup.bash" &gt;&gt; ~/.bashrc # 所有终端均生效</code></pre>
+<p>这时候就将环境变量加入了所有的终端中，再新起一个终端后，直接输入指令</p>
+<pre><code class="language-bash">&gt;roslaunch unitree_guide gazebo.launch</code></pre>
+<p><img alt="image-20250714161118671" decoding="async" height="1000" loading="lazy" src="/assets/media/106db20f20d2b41e.png" width="1812"/></p>
+<p>成功启动了 Gazebo 仿真节点</p>
+<ul>
+<li>在工作空间内新建一个终端</li>
+</ul>
+<pre><code class="language-bash">&gt;conda activate ros_env   # 激活我的 ros 环境
+./devel/lib/unitree_guide/junior_ctrl</code></pre>
+<p>此时不用配置环境变量了，因为我们此前将环境变量便携的一次性配置好了，进入键盘控制节点</p>
+<ul>
+<li><p>在 <code>junior_ctrl</code> 主界面输入
+<code>2</code>，控制机器人从 <strong>State_Passive</strong> 切换到
+<strong>fixed stand</strong></p></li>
+<li><p>回到 Gazebo 主界面，按下暂停键，然后在主菜单中选择
+<strong>Edit/Reset Model Poses</strong> 以重置机器人的位姿</p></li>
+<li><p>在 <code>junior_ctrl</code> 主界面输入
+<code>4</code>，控制机器人从 <strong>fixed stand</strong> 切换到
+<strong>LOCOMOTION</strong></p></li>
+<li><p>回到 Gazebo 主界面，点击播放键，重启应用</p></li>
+</ul>
+<p>运动的键盘控制为</p>
+<ul>
+<li><p><strong>前后运动</strong>：</p></li>
+<li><p><strong><code>W</code> 键</strong>：向前运动</p></li>
+<li><p><strong><code>S</code> 键</strong>：向后运动</p></li>
+<li><p><strong>左右平移</strong>：</p></li>
+<li><p><strong><code>A</code> 键</strong>：向左平移</p></li>
+<li><p><strong><code>D</code> 键</strong>：向右平移</p></li>
+<li><p><strong>左右旋转</strong>：</p></li>
+<li><p><strong><code>J</code> 键</strong>：向左旋转</p></li>
+<li><p><strong><code>L</code> 键</strong>：向右旋转</p></li>
+</ul>
+<p><img alt="image-20250714161818535" decoding="async" height="990" loading="lazy" src="/assets/media/9be6cac494fc1788.png" width="1735"/></p>
+<p>即可进行机器人的畅玩了</p>
+<h3 id="题外ros-节点运行情况">题外，ROS 节点运行情况</h3>
+<ul>
+<li>安装 rqt 小工具，对应适配的 ROS-noetic 版本</li>
+</ul>
+<pre><code class="language-bash">&gt;sudo apt install ros-noetic-rqt</code></pre>
+<ul>
+<li>运行 rqt</li>
+</ul>
+<pre><code class="language-bash">&gt;rqt</code></pre>
+<p>观察到运行中的节点情况为</p>
+<img alt="image-20250714163821926" decoding="async" height="355" loading="lazy" src="/assets/media/59ba67af4ca09f7c.png" width="1531"/>
+<p>话题激活情况为</p>
+<p><img alt="rosgraph" decoding="async" height="3639" loading="lazy" src="/assets/media/ae62121abbad7e1c.png" width="2061"/></p>
+<p>方便后续进行分析和学习</p>
+</blockquote>

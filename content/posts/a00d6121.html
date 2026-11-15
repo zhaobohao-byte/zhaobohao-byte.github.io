@@ -1,0 +1,111 @@
+<p>由于<code>eps</code>格式的图片质量较好，因此本文的图片都是基于<code>eps</code>格式的，借用<code>Adobe illustrator</code>工具进行格式转换。</p>
+<h3 id="1-其他格式转eps">1. 其他格式转eps</h3>
+<p>工具：<strong>Adobe illustrator2021</strong></p>
+<p><img decoding="async" height="88" loading="lazy" src="/assets/media/254c32c3032c2e03.png" width="77"/></p>
+<p>打开界面：</p>
+<p><img decoding="async" height="1040" loading="lazy" src="/assets/media/4ea57c99f765e0a5.png" width="1920"/></p>
+<p>把你的<code>jpg</code>,<code>png</code>,<code>pdf</code>等格式的文件直接拖入到这个页面中，之后点击</p>
+<p><img decoding="async" height="624" loading="lazy" src="/assets/media/0123954e8e100d28.png" width="649"/></p>
+<p>接着另存文件时进行命名并勾选<code>.eps</code>格式</p>
+<p><img decoding="async" height="225" loading="lazy" src="/assets/media/1f0308fd0ad9c6d5.png" width="943"/></p>
+<p>保存之后即成为<code>eps</code>格式图片</p>
+<p><img decoding="async" height="660" loading="lazy" src="/assets/media/2ca9e9c32a2e0af9.png" width="438"/></p>
+<p>如果预设能选高分辨率那就选上，可能更清晰吧图个心安，图个质量高！！！</p>
+<h4 id="2visio无损转eps">2.Visio无损转eps</h4>
+<p>很多人用<code>Visio</code>软件进行画图，但是如何进行<code>eps</code>格式导出呢。实则无法进行，或者只能是间接导出，从<code>Visio</code>—&gt;<code>pdf</code>—&gt;<code>eps</code></p>
+<p>很简单吧，相信大家都会<code>Visio</code>—&gt;<code>pdf</code>，而后再采用<code>Adobe illustrator</code>工具继续进行无损转换。</p>
+<p>但是需要注意的是<code>Visio</code>—&gt;<code>pdf</code>时，</p>
+<p><img decoding="async" height="605" loading="lazy" src="/assets/media/4ce88122143c2cb3.png" width="943"/></p>
+<p>注意取消勾选这个选项，防止导出的图片带黑框。</p>
+<h4 id="3word内无损取图">3.word内无损取图</h4>
+<p>当你的word文档内既有<code>Visio</code>的内联图像，又有外部复制进来的<code>jpg</code>，<code>png</code>格式的其他图像，另存为图像时往往会丢失一定的图像质量，导致图像模糊等等，这时候就可以采用以下方法进行取图</p>
+<ol type="1">
+<li><p>实质上word文件也是一个压缩包，先对你的文件进行解压即可得到一个文件夹，包含下面内容：
+<img decoding="async" height="142" loading="lazy" src="/assets/media/0333fa95fd960e45.png" width="625"/></p></li>
+<li><p>双击<code>word</code>子文件夹进入其中</p></li>
+</ol>
+<p><img decoding="async" height="397" loading="lazy" src="/assets/media/927f9e5b1ed75d89.png" width="943"/></p>
+<ol start="3" type="1">
+<li>这时候你的内联文件，如<code>mathtype</code>和<code>Visio</code>的文件就会在文件夹<code>embedding</code>内，而外部复制来的<code>jpg</code>，<code>png</code>等格式的图片就会在<code>media</code>文件夹内，这种图片的质量往往是无损的(与你复制过来的源文件一样)，而后可以进行处理变成<code>eps</code>格式放到论文中去。</li>
+</ol>
+<h4 id="4图片放置">4.图片放置</h4>
+<h5 id="41-单图">4.1 单图</h5>
+<p>图片的文件夹<code>Figures</code>和<code>Intro</code>与主文件<code>main.tex</code>属于同一级，因此插入图片的latex代码为：</p>
+<pre><code class="language-latex">\begin{figure}[!t]
+	\centering
+	\includegraphics[width=8.6cm]{Figures/Fig4.eps}
+	\caption{The description of your picture}
+	\label{fig_4}
+\end{figure}</code></pre>
+<ul>
+<li><p><code>!</code> 表示强制放置，而不是让 LaTeX 自动放置
+;<code>t</code>
+表示放在文本的顶部(<code>top</code>),而不是默认的底部(<code>bottom</code>)。<code>[!t]</code>
+的作用是让这个浮动体强制置于下一段文本的顶部。</p>
+<p>常见的几种设置是:</p>
+<blockquote>
+<p>[htbp] - h顶部,t顶部,b底部,p单独一页 [!ht] - 强制 h 或 t [H] -
+当前位置,不浮动</p>
+</blockquote>
+<p>使用 <code>[!t]</code>
+的好处通常是方便文本引用，以及控制图片表格的精确放置。强制放置可能影响文档的整体排版质量，需要谨慎使用。</p></li>
+<li><p><code>\centering</code>表示使图片居中</p></li>
+<li><p><code>\includegraphics[width=8.6cm]{Figures/Fig4.eps}</code>表示图片宽度为8.6cm（我通常设8.5或8.6），相对路径为<code>Figures/Fig4.eps</code>。</p></li>
+<li><p><code>\caption</code>代表图片下面的描述，<code>{}</code>内添加描述文本</p></li>
+<li><p><code>\label{x}</code>给图片添加标记，后面文本中<code>\ref{x}</code>即可对此图片进行引用。</p></li>
+</ul>
+<p>放置效果如下（带描述，文本顶部，宽8.5cm）：</p>
+<p><img decoding="async" height="437" loading="lazy" src="/assets/media/c31f92e3b3ba7d1c.png" width="459"/></p>
+<h5 id="42-多图">4.2 多图</h5>
+<p>双图效果：</p>
+<p><img decoding="async" height="329" loading="lazy" src="/assets/media/f3518aeeead95909.png" width="423"/></p>
+<p>latex代码为：</p>
+<pre><code class="language-latex">\begin{figure}[!t]
+	\centering
+	\subfloat[]{
+		\includegraphics[width=4cm]{Figures/Fig3_a.eps}}
+		\label{fig_3a}
+	\subfloat[]{
+		\includegraphics[width=4cm]{Figures/Fig3_b.eps}}
+		\label{fig_3b}
+	\caption{The description of your picture (a) The description of your picture1; (b) The description of your picture2.}
+	\label{fig_3}
+\end{figure}</code></pre>
+<p>这里使用<code>\subfloat[]{\includegraphics[width=4cm]{Figures/Fig3_b.eps}}</code>对图片进行双图放置，两图宽度为<code>4cm</code>恰好可以放到一个文本顶端。</p>
+<p>需要注意的是这里修改了包为</p>
+<pre><code class="language-latex">\usepackage[caption=false,font=footnotesize,labelfont=rm,textfont=rm]{subfig}
+%%%子图下标更小，且字体采用新罗马</code></pre>
+<p>原<code>IEEE</code>的包设置为</p>
+<pre><code class="language-latex">\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}</code></pre>
+<p>不这样设置的图片序号会很难看，如下：</p>
+<p><img decoding="async" height="236" loading="lazy" src="/assets/media/adfbab41c2c406b8.png" width="429"/></p>
+<p>这样的丑，甚至比下面的字还大一点，不好看不好看</p>
+<p>三图效果：</p>
+<p><img decoding="async" height="813" loading="lazy" src="/assets/media/055b191bea4a7e3c.png" width="682"/></p>
+<p>latex代码为：</p>
+<pre><code class="language-latex">\begin{figure}[!t]
+	\centering
+	\subfloat[]{
+	\includegraphics[width=8.5cm]{Figures/Fig2_a.eps}}
+	\vspace{0in}
+	\subfloat[]{
+	\includegraphics[width=4cm]{Figures/Fig2_b.eps}}
+	\subfloat[]{
+	\includegraphics[width=4cm]{Figures/Fig2_c.eps}}
+	\caption{The description of your picture (a) The description of your picture1; (b) The description of your picture2; (c) The description of your picture3
+	\label{fig_2}
+\end{figure}</code></pre>
+<p>需要注意的是这里使用代码<code>\vspace{0in}</code>告诉编译器下个子图在下方放置，因为不告诉他latex默认从左到右，不会换行的，会超出当前文本宽度。</p>
+<p>四图多图等同样的原理，使用<code>\subfloat[]{}</code>即可。</p>
+<h5 id="43-双栏图">4.3 双栏图</h5>
+<p>图片效果：</p>
+<p><img decoding="async" height="527" loading="lazy" src="/assets/media/1038d2d2034d66dd.png" width="890"/></p>
+<p>latex代码：</p>
+<pre><code class="language-latex">\begin{figure*}[!t]
+	\centering
+	\includegraphics[width=15cm]{Figures/Fig5.eps}
+	\caption{The description of your picture.}
+	\label{fig_5}
+\end{figure*}
+</code></pre>
+<p>注意图片域代码<code>\begin{figure*}[!t]  \end{figure*}</code>多添加了<code>*</code>，即可实现双栏的图像显示，居中宽度设为15cm。</p>

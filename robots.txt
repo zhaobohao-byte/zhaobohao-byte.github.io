@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zhaobohao-byte.github.io/sitemap.xml

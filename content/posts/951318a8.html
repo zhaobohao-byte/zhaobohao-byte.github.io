@@ -1,0 +1,103 @@
+<h2 id="latex写作4公式表格参考文献与人物简介篇">Latex写作4：公式、表格、参考文献与人物简介篇</h2>
+<h3 id="公式撰写">公式撰写</h3>
+<p>熟练latex公式撰写的同学可以根据代码</p>
+<pre><code class="language-latex">\begin{equation}
+your equation
+\lable{eq:x}
+\end{equation}</code></pre>
+<p>自行撰写，需要注意的是上述公式自带编号，公式引用格式为<code>(\ref{eq:x})</code>，而下述代码则没有自带编号的公式：</p>
+<pre><code class="language-latex">\begin{equation*}
+your equation
+\end{equation*}</code></pre>
+<p>小技巧：</p>
+<p>纯代码式编写公式操作比较麻烦，可视化弱，可以将通用的公式截图在网站：<a href="https://simpletex.cn/ai/latex_ocr" rel="noopener noreferrer" target="_blank">SimpleTex - Snip &amp;
+Get!</a>进行识别得到latex代码进行修改。</p>
+<p>如果被识别的公式非常复杂的代码中难以定位，则可以吧复制的latex代码粘贴到<code>Mathtype</code>中进行可视化的编辑，之后设置<code>Mathtype</code>选项</p>
+<p><img decoding="async" height="272" loading="lazy" src="/assets/media/c728ebf141803690.png" width="804"/></p>
+<p>设置<code>剪切和复制预置</code></p>
+<p><img decoding="async" height="259" loading="lazy" src="/assets/media/3ad38dbcfe1b8e88.png" width="400"/></p>
+<p>之后将<code>Mathtype</code>选择公式复制到latex编辑环境中公式最左和最右处会多出<code>\[  \]</code>，如下所示</p>
+<pre><code class="language-latex">\[{\rm{a + b = c}}\]</code></pre>
+<p>删掉即可</p>
+<h3 id="表格绘制">表格绘制</h3>
+<p>如图所示</p>
+<p><img decoding="async" height="279" loading="lazy" src="/assets/media/f136b90faa6afb90.png" width="859"/></p>
+<p>待绘制表格为上图所示，代码为</p>
+<pre><code class="language-latex">\begin{table*}[]
+	\centering
+	\begin{threeparttable}[b]
+	\caption{Joint Configuration of the Bio-inspired Humanoid Robot}
+	\label{tab:1}
+	\begin{tabular}{@{}cccccccc@{}}
+		\toprule
+		\multirow{2}{*}{\tabincell{c}{Joints \\ \ (S)}	
+		} &amp; \multirow{2}{*}{M} &amp; \multirow{2}{*}{R} &amp; \multirow{2}{*}{G} &amp; \multicolumn{2}{c}{P/ S} &amp; \multirow{2}{*}{\tabincell{c}{W \\ \ (kg)\tnote{a}}
+		} &amp;\multirow{2}{*}{R \tnote{d}} \\ \cmidrule(lr){5-6}  
+		&amp;                   &amp;                  &amp;                   &amp;RD        		
+		&amp;                   &amp;            \\ \midrule 
+		H                &amp;8                   &amp;\tabincell{c}{C \\ \ p}                    &amp;2           &amp;\tabincell{c}{1  \\ \ rad /s}          &amp;2                   &amp;1&amp;-0.8          \\
+		K&amp;                   8&amp;B                   &amp;3\tnote{a}                   &amp;\tabincell{c}{2  \\ \ rad /s}            &amp;\tabincell{c}{5 \tnote{c} / \\ \ rad/s \tnote{c}}          &amp; 1                &amp;-2          \\
+	    A           &amp;7          &amp;B                   &amp;6\tnote{b}&amp;\tabincell{c}{1   \\ \ rad/s}
+	    &amp;\tabincell{c}{4\tnote{c} / \\ s \tnote{c}}                   &amp;1                        &amp;-1\tnote{b}          \\ \bottomrule
+	\end{tabular}
+	\begin{tablenotes}
+		\item[a] xxxx
+		\item[b] xxxx
+		\item[c] xxxx
+		\item[d] xxxx.
+	\end{tablenotes}
+	\end{threeparttable}
+\end{table*}</code></pre>
+<ul>
+<li><p><code>table*</code>表示所绘制的表格为双栏形式，绘制表格需要的包为:</p>
+<pre><code class="language-latex">\usepackage{tabularx} %复杂表格
+\usepackage{booktabs} %复杂表格
+\usepackage{multirow} %复杂表格</code></pre>
+</li>
+<li><p><code>\begin{threeparttable}[b]........\end{threeparttable}</code>表示表格具有备注，如上面图片显示的<code>abcd</code>，所需要的包为</p>
+<pre><code class="language-latex">\usepackage{threeparttable} % 表格备注</code></pre>
+</li>
+<li><p><code>\caption</code>表示表头的描述</p></li>
+<li><p><code>\label{tab:1}</code>表示表格的标签，后续需要引用表格则可以<code>\ref{tab:1}</code>引用</p></li>
+<li><p><code>@{}cccccccc@{}</code>表示表格具有9列，并表格内容居中对其，此外<code>r</code>表示右对齐，<code>l</code>表示左对齐</p></li>
+<li><p><code>\toprule</code>表示表格的顶线（三线表），<code>\midrule</code>表示表格的中线（三线表），<code>\bottomrule</code>表示表格的底线（三线表）</p></li>
+<li><p><code>\multirow{2}{*}{xxxx}</code>表示按2行合并单元格，<code>\multicolumn{2}{c}{}</code>表示按2列居中合并单元格</p></li>
+<li><p><code>\cmidrule(lr){5-6}</code>表示局部的横线</p>
+<pre><code class="language-latex">\begin{tablenotes}
+	\item[a] xxxx
+	\item[b] xxxx
+	\item[c] xxxx
+	\item[d] xxxx.
+\end{tablenotes}</code></pre>
+</li>
+</ul>
+<p>这段代码表示表格底部的备注意义，在表格中可以凭自定义命令<code>\tnote{x}</code>进行引用，此指令在开头进行了定义：</p>
+<pre><code class="language-latex">\newcommand{\tabincell}[2]{
+	\begin{tabular}{@{}#1@{}}
+		#2
+	\end{tabular}</code></pre>
+<p>表格学习可以参考latex官网给出的教程：</p>
+<p><a href="https://www.latexstudio.net/archives/7804" rel="noopener noreferrer" target="_blank">474.
+LaTeX技巧184：精致的表格教程 - LaTeX工作室 (latexstudio.net)</a></p>
+<h3 id="参考文献">参考文献</h3>
+<p>[<a href="https://blog.csdn.net/qq_31225201/article/details/126676322" rel="noopener noreferrer" target="_blank">Latex]
+\bibitem{} | .bbl 格式参考文献转换与获得_latex \bibitem-CSDN博客</a></p>
+<p>参考上述博客即可获得<code>bibitem</code>格式的文献，这里就不再赘述了；以后会尝试使用<code>BibTeX</code>来管理参考文献，将参考文献放到<code>.bib</code>统一管理。</p>
+<h3 id="人物简介">人物简介</h3>
+<p>如图</p>
+<p><img decoding="async" height="163" loading="lazy" src="/assets/media/84f1446903bb950b.png" width="421"/></p>
+<p>代码如下：</p>
+<pre><code class="language-latex">\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in]{Intro/hg.eps}}]{Gao~Huang}
+	xxxxxxxxxx
+\end{IEEEbiography}
+\vspace{-10 mm}</code></pre>
+<p>其中</p>
+<blockquote>
+<ul>
+<li><code>\includegraphics[width=1in,height=1.25in]</code>为IEEE的默认人物图片大小</li>
+<li><code>Intro/hg.eps</code>为文件的相对地址（人物介绍图片在Intro文件中）</li>
+<li><code>{Gao~Huang}</code>为人物的“名+姓”</li>
+<li>中间部分内容为人物的学历成就</li>
+<li><code>\vspace{-10 mm}</code>为垂直距离缩进，使人物简介之间的距离合适</li>
+</ul>
+</blockquote>

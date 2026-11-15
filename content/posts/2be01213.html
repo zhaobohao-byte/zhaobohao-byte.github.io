@@ -1,0 +1,59 @@
+<h3 id="命令大全">命令大全</h3>
+<pre><code class="language-bash">git init                        # 在当前目录创建新仓库
+git clone &lt;url&gt; [目录名]        # 克隆远程仓库（最常用方式创建本地仓库）
+git remote add origin &lt;url&gt;     # 添加远程仓库（通常叫origin）
+git add &lt;文件/目录&gt;             # 添加文件到暂存区
+git add .                       # 添加当前目录所有改动
+git add -f &lt;文件/目录&gt;             # 添加文件到暂存区（无视gitignore）
+git commit -m "提交信息"        # 普通提交（最常用）
+git commit -am "信息"           # add + commit 一步完成（只对已跟踪文件有效）
+git remote -v                   # 查看远程仓库地址
+git checkout &lt;分支名&gt;           # 切换分支（老写法）
+git diff                        # 查看工作区与暂存区的差异
+git branch                      # 查看本地所有分支
+git pull                        # fetch + merge（最常用拉取方式）
+git pull --rebase               # 拉取并变基（保持干净历史）
+
+
+# ==================== 2. 基本状态查看 ====================
+git status                      # 查看工作区/暂存区/分支状态（最常用）
+git status -s -b                # 简洁版 + 显示分支信息
+git diff --staged               # 查看暂存区与最后一次提交的差异
+git log                         # 查看提交历史
+git log --oneline --graph       # 美观单行 + 分支图形化（超级推荐）
+git log -p -2                   # 查看最近2次提交的详细差异
+
+# ==================== 3. 日常工作区操作 ====================
+
+git add -A                      # 添加所有改动（包括删除、新建、修改）
+git rm &lt;文件&gt;                   # 删除文件并记录到暂存区
+git mv &lt;旧名&gt; &lt;新名&gt;            # 重命名/移动文件并记录
+
+git commit --amend              # 修改上一次提交信息/内容（非常常用）
+git commit --amend --no-edit    # 只加内容不改信息（快速修正漏加的文件）
+git restore &lt;文件&gt;              # 丢弃工作区改动（推荐，Git 2.23+）
+git restore --staged &lt;文件&gt;     # 把文件从暂存区移除
+git checkout -- &lt;文件&gt;          # 老写法，丢弃工作区改动（仍很多人用）
+git branch -v                   # 查看分支最后一次提交信息
+git branch &lt;分支名&gt;             # 创建分支
+git branch -d &lt;分支名&gt;          # 删除已合并的分支
+git switch &lt;分支名&gt;             # 切换分支（新推荐写法，Git 2.23+）
+git switch -c &lt;新分支名&gt;        # 创建并切换到新分支（最常用组合）
+git merge &lt;分支名&gt;              # 把指定分支合并到当前分支
+git merge --no-ff &lt;分支名&gt;      # 禁用fast-forward，保留合并提交（常用）
+
+git push -u origin &lt;分支名&gt;     # 第一次推送分支并建立关联（最常用）
+git push                        # 普通推送（建立关联后）
+git push origin --delete &lt;分支&gt; # 删除远程分支
+git fetch                       # 获取远程更新但不合并
+
+git switch -                       # 切换到上一个分支（超级方便）
+
+# 常用，复制其他分支文件到本分支
+git checkout 目标分支名 -- 要拉取的文件路径
+git checkout feature -- src/utils.js # 复制feature分支的
+git checkout feature -- src/ # 复制文件夹
+
+# 取消跟踪
+git rm --cached -r logs
+</code></pre>

@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "album",
+    "title": "相册集"
+  },
+  {
+    "slug": "essay",
+    "title": "即刻短文"
+  },
+  {
+    "slug": "bangumis",
+    "title": "追番列表"
+  },
+  {
+    "slug": "music",
+    "title": "音乐馆"
+  },
+  {
+    "slug": "dailyPhoto",
+    "title": "小赵日常"
+  },
+  {
+    "slug": "wordScenery",
+    "title": "美景如画"
+  },
+  {
+    "slug": "link",
+    "title": "友情链接"
+  }
+]

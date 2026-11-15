@@ -1,0 +1,56 @@
+<p>安装网址：<a href="https://github.com/cli/cli/blob/trunk/docs/install_linux.md" rel="noopener noreferrer" target="_blank">https://github.com/cli/cli/blob/trunk/docs/install_linux.md</a></p>
+<p>2026年安装CLI，ubuntu</p>
+<pre><code class="language-bash"># 设置密钥环
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+# 添加官方稳定版源
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list &gt; /dev/null
+# 安装
+sudo apt update &amp;&amp; sudo apt install gh -y</code></pre>
+<ul>
+<li>使用</li>
+</ul>
+<pre><code class="language-bash"># 基础配置
+gh auth login          # 交互式登录（支持浏览器或 Token）
+gh auth status         # 查看当前登录状态及账号
+gh auth logout         # 退出登录
+
+# 仓库管理
+gh repo create my-project --public --clone  # 创建新的公共仓库并克隆到本地
+gh repo clone owner/repo                    # 克隆仓库
+gh repo fork owner/repo --clone             # 派生仓库并克隆到本地
+gh repo view --web                          # 直接在浏览器中打开当前仓库页面
+
+# 拉取请求
+gh pr create --title "修复Bug" --body "描述信息"  # 创建 PR
+gh pr list                                        # 列出当前仓库所有的 PR
+gh pr checkout 123                                # 检出 ID 为 123 的 PR 分支进行测试
+gh pr diff                                        # 查看当前 PR 的代码改动
+gh pr merge --merge                               # 合并 PR（支持 --rebase 或 --squash）
+gh pr status                                      # 查看与你相关的 PR 状态</code></pre>
+<ul>
+<li>登录</li>
+</ul>
+<pre><code class="language-bash">gh auth login
+? Where do you use GitHub? GitHub.com
+? What is your preferred protocol for Git operations on this host? SSH
+? Generate a new SSH key to add to your GitHub account? Yes
+? Enter a passphrase for your new SSH key (Optional): 
+? Title for your SSH key: Laptop_Ubuntu20.04
+? How would you like to authenticate GitHub CLI? Login with a web browser</code></pre>
+<ul>
+<li>快速将本地上传仓库</li>
+</ul>
+<pre><code class="language-bash">git config --global user.name "laptop_ubuntu20.04" # 22.04 or windows or others
+git config --global user.email "1653505623@qq.com"
+git init
+echo "# my project" &gt; README.md
+echo -e "node_modules/\n__pycache__/\n.DS_Store\n.vscode/\n*.log\n*.o\n*.obj\n*.out\n*.exe" &gt; .gitignore
+
+git add .
+git commit -m "initial commit"
+ 
+gh repo create my-project --private --source=. --push # 创建仓库并上传代码
+# 修改仓库名字 gh repo rename new-name
+# 修改仓库描述 gh repo edit --name "new-project-name" --description "这是新的项目描述"
+git remote -v # 查看是否链接成功</code></pre>

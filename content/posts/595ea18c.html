@@ -1,0 +1,212 @@
+<h2 id="ros-深蓝学院宇树机器人强化学习训练与部署">ROS
+深蓝学院宇树机器人强化学习训练与部署</h2>
+<h3 id="环境必备">环境必备</h3>
+<p>深蓝学院的作业是基于宇树科技的官方强化学习文档进行布置的，里面的部署操作步骤也在官网有，这里给出宇树机器人的强化学习部署链接：</p>
+<ol type="1">
+<li>https://support.unitree.com/home/zh/G1_developer/rl_control_routine</li>
+<li>https://support.unitree.com/home/zh/rl_gym/intro</li>
+</ol>
+<ul>
+<li>系统要求</li>
+</ul>
+<p>由于 isaac_gym 仿真平台需要 <code>CUDA</code>,本文建议硬件需要配置
+NVIDIA 显卡(显存&gt;8GB、
+RTX系列显卡)，并安装相应的显卡驱动。建议系统使用
+<code>ubuntu18/20</code>，显卡驱动 525 版本。</p>
+<p>这里最好使用 <strong>Ubuntu20.04</strong> 发行版</p>
+<ul>
+<li>下载 <code>miniconda</code></li>
+</ul>
+<p>为了方便进行环境的隔离，这里本电脑早期已经完成了
+<code>miniconda</code>
+的相关包下载，这里直接按照链接步骤进行即可，在此不进行记录</p>
+<ul>
+<li>创建强化学习环境</li>
+</ul>
+<pre><code class="language-bash">conda create -n rl-g1 python=3.8</code></pre>
+<p>电脑配置为 4090 显卡，为了不和师弟的环境冲突，这里创建名为
+<code>rl-g1</code> 的环境，指定创建环境时安装的 Python 版本为
+3.8，如果不指定，会默认使用 <code>conda</code> 当前版本中默认的 Python
+版本（可能是最新的）。</p>
+<ul>
+<li>激活环境</li>
+</ul>
+<pre><code class="language-bash">conda activate rl-g1</code></pre>
+<ul>
+<li>安装 <code>CUDA</code> 、<code>Pytorch</code></li>
+</ul>
+<pre><code class="language-bash">pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html</code></pre>
+<p>这里选择安装 <strong>PyTorch</strong>
+的特定版本：1.10.0，<code>+cu113</code> 表示这个版本是编译给
+<strong>CUDA 11.3</strong> 使用的（GPU 加速版本）</p>
+<p>安装了与上述 PyTorch 兼容的图像处理库 <code>torchvision</code></p>
+<p>安装了与 PyTorch 兼容的音频处理库 <code>torchaudio</code></p>
+<p><strong>注意，这里只是官网的步骤，后续出现报错不兼容问题，这行代码需要重新修改</strong></p>
+<ul>
+<li>下载 <a href="https://developer.nvidia.com/isaac-gym" rel="noopener noreferrer" target="_blank">Isaac Gym
+Preview 4</a> 仿真平台，解压后进入 <code>python</code> 目录，使用
+<code>pip</code> 安装。</li>
+</ul>
+<pre><code class="language-bash"># current directory: isaacgym/python
+pip install -e .</code></pre>
+<ul>
+<li>运行 <code>python/examples</code>
+目录下的例程，验证安装是否成功。</li>
+</ul>
+<pre><code class="language-bash"># current directory: isaacgym/python/examples
+python 1080_balls_of_solitude.py</code></pre>
+<p><img alt="img" decoding="async" height="937" loading="lazy" src="/assets/media/76a7af1e1b8b39d2.png" width="1600"/></p>
+<p>实例运行成功标识</p>
+<ul>
+<li>安装 <code>rsl_rl</code> 库</li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/leggedrobotics/rsl_rl
+cd rsl_rl
+git checkout v1.0.2
+pip install -e .</code></pre>
+<ul>
+<li>下载宇树官方示例代码</li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/unitreerobotics/unitree_rl_gym.git</code></pre>
+<p>注意，这个示例代码在询问宇树科技的工程师后，对应的是实机遥控上常规运控模式</p>
+<ul>
+<li>修改路径</li>
+</ul>
+<p>修改 <code>legged_gym/scripts/train.py</code> ，
+<code>legged_gym/scripts/play.py</code>
+中的<code>sys.path.append("/home/unitree/h1/legged_gym")</code>
+为自己的路径。</p>
+<p>这个到手不知道具体怎么操作，暂时没管</p>
+<ul>
+<li>开始训练</li>
+</ul>
+<pre><code class="language-bash">cd legged_gym/scripts/
+python3  train.py --task=g1</code></pre>
+<p><strong>报错！！！</strong></p>
+<pre><code class="language-bash">Importing module 'gym_38' (/home/robot/RemoteUsers/Bohao/examples/rl-g1/IsaacGym_Preview_4_Package/isaacgym/python/isaacgym/_bindings/linux-x86_64/gym_38.so)
+Setting GYM_USD_PLUG_INFO_PATH to /home/robot/RemoteUsers/Bohao/examples/rl-g1/IsaacGym_Preview_4_Package/isaacgym/python/isaacgym/_bindings/linux-x86_64/usd/plugInfo.json
+Traceback (most recent call last):
+  File "train.py", line 7, in &lt;module&gt;
+    from legged_gym.envs import *
+ModuleNotFoundError: No module named 'legged_gym'</code></pre>
+<p>这里显示没有名为 <code>legged_gym</code>
+的包，可能是缺少相关环境变量的引入，也就是上一步修改路径的工作</p>
+<ul>
+<li>导入环境变量</li>
+</ul>
+<pre><code class="language-bash">cd ./rsl_rl/unitree_rl_gym
+export PYTHONPATH=$(pwd)
+python3 legged_gym/scripts/train.py --task=g1</code></pre>
+<p>根据询问 <code>GPT</code> 的结果，导入环境变量后重新运行训练例程</p>
+<p><strong>报错！！！</strong></p>
+<pre><code class="language-bash"># 最后一句
+RuntimeError: nvrtc: error: invalid value for --gpu-architecture (-arch)</code></pre>
+<p>注意到这里报错的是 gpu 架构不对，说明之前的架构配置有问题，GPT
+给出的答复为：</p>
+<p>这说明 TorchScript/JIT 编译 GPU 相关 CUDA 扩展时，在调用
+<code>nvrtc</code>（NVIDIA Runtime Compilation）的时候，传递的 GPU
+架构参数无效。这是一个典型的 CUDA 版本与 GPU 驱动或 PyTorch/Isaac Gym
+不兼容 的问题。</p>
+<ul>
+<li>显示本电脑架构</li>
+</ul>
+<pre><code class="language-bash">nvidia-smi
+nvcc --version</code></pre>
+<p>输入命令后，命令行显示为</p>
+<p><img alt="image-20250717102728368" decoding="async" height="271" loading="lazy" src="/assets/media/b26d7a936be23575.png" width="573"/></p>
+<pre><code class="language-bash">nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2023 NVIDIA Corporation
+Built on Tue_Feb__7_19:32:13_PST_2023
+Cuda compilation tools, release 12.1, V12.1.66
+Build cuda_12.1.r12.1/compiler.32415258_0</code></pre>
+<p>而我们之前安装官网安装的<code>torch</code>是 <code>CUDA 11.3</code>
+版本，与目前本服务器电脑 4090 的 CUDA 版本 12.1 不兼容</p>
+<ul>
+<li>卸载之前的 <code>CUDA 11.3</code> 版本</li>
+</ul>
+<pre><code class="language-bash">pip uninstall torch torchvision torchaudio</code></pre>
+<ul>
+<li>重新安装兼容的 <code>Pytorch</code></li>
+</ul>
+<pre><code class="language-bash">pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121</code></pre>
+<p>这里安装 12.1 版本的最佳，和我们电脑匹配</p>
+<h3 id="模型训练">模型训练</h3>
+<ul>
+<li>仿真训练参数选择</li>
+</ul>
+<ol type="1">
+<li><code>--task</code>: 必选参数，值可选(go2, g1, h1, h1_2)，这里
+g1</li>
+<li><code>--headless</code>: 默认启动图形界面，设为 true
+时不渲染图形界面（效率更高）</li>
+<li><code>--resume</code>: 从日志中选择 checkpoint 继续训练</li>
+<li><code>--experiment_name</code>: 运行/加载的 experiment 名称</li>
+<li><code>--run_name</code>: 运行/加载的 run 名称</li>
+<li><code>--load_run</code>: 加载运行的名称，默认加载最后一次运行</li>
+<li><code>--checkpoint</code>: checkpoint
+编号，默认加载最新一次文件</li>
+<li><code>--num_envs</code>: 并行训练的环境个数</li>
+<li><code>--seed</code>: 随机种子</li>
+<li><code>--max_iterations</code>: 训练的最大迭代次数</li>
+<li><code>--sim_device</code>: 仿真计算设备，指定 CPU 为
+<code>--sim_device=cpu</code></li>
+<li><code>--rl_device</code>: 强化学习计算设备，指定 CPU 为
+<code>--rl_device=cpu</code></li>
+</ol>
+<ul>
+<li>运行训练脚本</li>
+</ul>
+<pre><code class="language-bash">python3 legged_gym/scripts/train.py --task=g1</code></pre>
+<p>默认保存训练结果：<code>logs/&lt;experiment_name&gt;/&lt;date_time&gt;_&lt;run_name&gt;/model_&lt;iteration&gt;.pt</code></p>
+<ul>
+<li>开始训练（由于我们具有实物，最好保持示例参数不便，迭代 10000
+次进行训练）</li>
+</ul>
+<img alt="image-20250717105025049" decoding="async" height="398" loading="lazy" src="/assets/media/cce2351f6683aab9.png" width="604"/>
+<p><img alt="train" decoding="async" height="1440" loading="lazy" src="/assets/media/54912a4db0afe027.png" width="2561"/></p>
+<p>小 tip :图形界面渲染会导致训练速度减慢，在 IsaacGym
+的界面中按键盘上的<code>v</code>键，可以暂停渲染，加快训练速度。如果想要查看训练的效果可以再次按<code>v</code>，重新开启渲染。</p>
+<p>训练的时候犯蠢没看到这个，训练老慢了花了一天半。</p>
+<ul>
+<li>训练结果展示-isaacgym</li>
+</ul>
+<pre><code class="language-bash">python legged_gym/scripts/play.py --task=g1</code></pre>
+<p><img alt="expfold" decoding="async" height="1413" loading="lazy" src="/assets/media/d80c6682b9e84c31.png" width="2488"/></p>
+<p>注意，使用默认 <code>play</code>
+脚本运行将加载实验文件夹上次运行的最后一个模型，可通过 load_run 和
+checkpoint 指定其他模型。注意到，每进行 50
+次迭代进行一次训练网络参数的模型保存，其中第一个事件文件记录模型训练过程中的相关性能参数，可以由可视化工具，如
+<code>TensorBoard</code> 进行可视化展示。</p>
+<p><img alt="sim" decoding="async" loading="lazy" src="home/bohao/Pictures/sim.png"/></p>
+<ul>
+<li>训练结果文件</li>
+</ul>
+<p>训练结果默认保存在
+<code>rsl_rl/unitree_rl_gym/logs/g1/exported/policies</code>
+文件夹下，第一次训练的官方例程名称为 <code>policy_lstm_1.pt</code></p>
+<ul>
+<li><code>TensorBoard</code> 数据可视化</li>
+</ul>
+<p>安装 <code>TensorBoard</code></p>
+<pre><code class="language-bash">pip install tensorboard</code></pre>
+<p>在 <code>rsl_rl/unitree_rl_gym</code> 文件夹下打开终端，切换到
+<code>rl-g1</code> 的 conda 环境，运行</p>
+<pre><code class="language-bash">tensorboard --logdir logs</code></pre>
+<p>在本地打开网址 http://localhost:6006/ 查看训练过程可视化结果</p>
+<p><img alt="TenserBoard" decoding="async" height="1413" loading="lazy" src="/assets/media/07840a46b15011d1.png" width="2488"/></p>
+<h3 id="模型部署">模型部署</h3>
+<ul>
+<li>sim2sim，部署到 <code>mujoco</code></li>
+</ul>
+<p>将训练结果文件 <code>policy_lstm_1.pt</code> 复制粘贴到
+<code>deploy_mujoco/configs/g1.yaml</code> 中，对其内部的
+<code>policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/g1/motion.pt"</code>
+的 <code>motion.pt</code> 控制策略进行替换，使用我们训练出来的控制策略
+<code>policy_lstm_1.pt</code></p>
+<ul>
+<li>启动 <code>python</code> 脚本并运行</li>
+</ul>
+<pre><code class="language-bash">python deploy/deploy_mujoco/deploy_mujoco.py g1.yaml
+</code></pre>
+<p><img alt="image-20250721130031031" decoding="async" height="221" loading="lazy" src="/assets/media/ad25d2324eac7ed2.gif" width="400"/></p>
+<p>成功运行，机器人稳定行走</p>
